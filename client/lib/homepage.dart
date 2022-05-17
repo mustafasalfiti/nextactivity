@@ -9,25 +9,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-            myCard("Capoeira Essen", "", "Komm, Trainiere ohne Trainer"),
-            myCard("Samurai", "", "Komische Kurse"),
-            myCard("FitX", "", "Schoen"),
-            myCard("McFit", "", "War ich lange nicht da"),
-            myCard("MustiFit", "", "Be a Musti"),
-            myCard("HakiFit", "", "Be the Aguia"),
-            SizedBox(
-              height: 15,
-            ),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: 15,
+          ),
+          myCard("Capoeira Essen", "", "Komm, trainiere ohne Trainer"),
+          myCard("Samurai", "", "Komische Kurse"),
+          myCard("FitX", "", "Schön"),
+          myCard("McFit", "", "War ich lange nicht da"),
+          myCard("MustiFit", "", "Be a Musti"),
+          myCard("HakiFit", "", "Be the Aguia"),
+          myCard("SvenjaYoga", "", "Be ready for the rainbow"),
+          myCard("InesMusic", "", "The best vibes... only for me"),
+          SizedBox(
+            height: 15,
+          ),
+        ],
       ),
     );
   }
