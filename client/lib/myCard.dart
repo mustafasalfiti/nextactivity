@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class myCard extends StatelessWidget {
+class MyCard extends StatelessWidget {
   final String text;
   final String img;
   final String info;
-  const myCard(
+  const MyCard(
     this.text,
     this.img,
     this.info, {
