@@ -19,7 +19,7 @@ class MyCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: const Icon(Icons.sports_martial_arts),
+              leading: const Icon(Icons.access_alarm),
               title: Text(text),
               subtitle: Text(info),
             ),
