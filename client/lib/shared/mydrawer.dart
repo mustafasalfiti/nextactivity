@@ -64,7 +64,10 @@ class MyDrawer extends StatelessWidget {
           title: Text("Your Dashboard"),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EventTemplate()),
+          ),
           leading: Icon(
             Icons.assessment,
             color: Colors.black,
@@ -82,4 +85,76 @@ class MyDrawer extends StatelessWidget {
       ],
     );
   }
+}
+
+class EventTemplate extends StatelessWidget {
+  const EventTemplate({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Enter Your Event'),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.celebration),
+                hintText: 'Event name',
+                labelText: 'Name',
+              ),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.description),
+                hintText: 'Event description',
+                labelText: 'Description',
+              ),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.location_city),
+                hintText: 'Event location',
+                labelText: 'Location',
+              ),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.calendar_today),
+                hintText: 'Event date',
+                labelText: 'Date',
+              ),
+            ),
+            new Container(
+                padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+                child: new RaisedButton(
+                  child: const Text('Submit'),
+                  onPressed: () =>
+                      showPopUp(context, 'Success', 'Your event is created!'),
+                  // Navigator.pop(context), // TODO Go back after event creation
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+showPopUp(context, String title, String content) {
+  showDialog<String>(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.pop(context, 'OK'),
+          child: const Text('OK'),
+        ),
+      ],
+    ),
+  );
 }
