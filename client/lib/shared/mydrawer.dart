@@ -87,46 +87,82 @@ class MyDrawer extends StatelessWidget {
   }
 }
 
-class EventTemplate extends StatelessWidget {
-  const EventTemplate({Key? key});
+class EventTemplate extends StatefulWidget {
+  const EventTemplate({Key? key}) : super(key: key);
+
+  @override
+  State<EventTemplate> createState() => _EventTemplateState();
+}
+
+class _EventTemplateState extends State<EventTemplate> {
+  var items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  String _dropdownValue = 'Item 1';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Enter Your Event'),
+        title: Text('Enter Your Event'),
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.celebration),
+              decoration: InputDecoration(
+                icon: Icon(Icons.celebration),
                 hintText: 'Event name',
                 labelText: 'Name',
               ),
             ),
             TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.description),
+              decoration: InputDecoration(
+                icon: Icon(Icons.description),
                 hintText: 'Event description',
                 labelText: 'Description',
               ),
             ),
             TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.location_city),
+              decoration: InputDecoration(
+                icon: Icon(Icons.check_box_rounded),
+                hintText: 'Event type',
+                labelText: 'Type',
+              ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                icon: Icon(Icons.location_city),
                 hintText: 'Event location',
                 labelText: 'Location',
               ),
             ),
             TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.calendar_today),
+              decoration: InputDecoration(
+                icon: Icon(Icons.calendar_today),
                 hintText: 'Event date',
                 labelText: 'Date',
               ),
+            ),
+            DropdownButton(
+              value: _dropdownValue,
+              items: items.map((String item) {
+                return DropdownMenuItem(
+                  value: item,
+                  child: Text(item),
+                );
+              }).toList(),
+              icon: Icon(Icons.keyboard_arrow_down),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _dropdownValue = newValue!;
+                });
+              },
             ),
             Container(
                 padding: EdgeInsets.only(left: 150.0, top: 40.0),
