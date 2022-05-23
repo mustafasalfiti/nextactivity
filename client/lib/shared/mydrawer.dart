@@ -128,10 +128,10 @@ class EventTemplate extends StatelessWidget {
                 labelText: 'Date',
               ),
             ),
-            new Container(
-                padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-                child: new RaisedButton(
-                  child: const Text('Submit'),
+            Container(
+                padding: EdgeInsets.only(left: 150.0, top: 40.0),
+                child: ElevatedButton(
+                  child: Text('Submit'),
                   onPressed: () =>
                       showPopUp(context, 'Success', 'Your event is created!'),
                   // Navigator.pop(context), // TODO Go back after event creation
