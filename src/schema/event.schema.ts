@@ -9,6 +9,9 @@ export class Event extends Document {
     @Prop({ type: String })
     event_type: string
 
+    @Prop({ type: String , required: true })
+    titel: string
+
     @Prop({ type: Types.ObjectId, required: true })
     createdBy: Types.ObjectId
 

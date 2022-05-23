@@ -16,7 +16,6 @@ export class EventController {
      * send back all events from the database
      @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Get()
     public async getAllEvents(
         @Res() res: Response
@@ -34,7 +33,6 @@ export class EventController {
      * @param id
      * @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Get()
     public async getEvent(
         @Body('id') id: string,
@@ -53,7 +51,6 @@ export class EventController {
      * @param createEventDto
      * @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Post()
     public async createEvent(
         @Body() createEventDto: CreateEventDto,
@@ -121,3 +118,6 @@ export class EventController {
     }
 
 }
+
+
+

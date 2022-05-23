@@ -9,6 +9,10 @@ export class CreateEventDto {
 
     @IsString()
     @IsNotEmpty()
+    readonly titel:string;
+
+    @IsString()
+    @IsNotEmpty()
     readonly event_type: string;
 
     @IsObject()
@@ -37,6 +41,10 @@ export class CreateEventDto {
 
 
 export class UpdateEventDto {
+    @IsString()
+    @IsNotEmpty()
+    readonly titel:string;
+
     @IsString()
     @IsNotEmpty()
     readonly event_type: string;

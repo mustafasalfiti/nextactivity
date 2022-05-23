@@ -1,22 +1,17 @@
 import 'dart:convert';
-import 'package:http/http.dart';
-import 'event_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
 
 class HttpService {
-  final String url = 'localhost:3000';
+  final Uri url = Uri.parse('http://localhost:3000/api/event/test');
 
-  Future<List<Event>> getEvents() async {
-    Response res = await get(url);
-    if (res.StatusCode == 200) {
-      List<dynamic> body = jsonDecode(res.body);
-      List<Event> events =
-          body.map((dynamic event) => Event.fromJson(event)).toList();
-          return events
+  Future getEvents() async {
+    var res = await http.get(url);
+    if (res.statusCode == 200) {
+      print(res);
+      return null;
     } else {
       throw "Unable to get Events";
     }
-    }
   }
 }
-
-
