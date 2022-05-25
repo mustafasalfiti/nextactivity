@@ -1,7 +1,6 @@
+import 'package:client/pages/homepage.dart';
 import 'package:client/themes/my_input_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'homepage/homepage.dart';
 
 void main() {
   runApp(MyApp());

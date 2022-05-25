@@ -1,5 +1,5 @@
-import 'package:client/homepage/post.dart';
-import 'package:client/shared/myCard.dart';
+import 'package:client/pages/post.dart';
+import 'package:client/shared/mycard.dart';
 import 'package:client/shared/mydrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

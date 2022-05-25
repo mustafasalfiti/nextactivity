@@ -3,9 +3,8 @@ import { Types } from "mongoose";
 
 export class CreateEventDto {
 
-    @IsObject()
-    @IsNotEmpty()
-    readonly createdBy: Types.ObjectId;
+    @IsString()
+    readonly createdBy: string = "628d65a78c9e965624b1d2a9"
 
     @IsString()
     @IsNotEmpty()

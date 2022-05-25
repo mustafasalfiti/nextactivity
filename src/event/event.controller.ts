@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Request, HttpStatus, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
+import { Mongoose } from 'mongoose';
 import { JwtAuthGuard } from 'src/auth/JwtAuth/jwt-auth.guard';
 import { CreateEventDto, UpdateEventDto } from 'src/dto/event.dto';
 import { Event } from 'src/schema/event.schema';
@@ -57,9 +58,11 @@ export class EventController {
         @Res() res: Response
     ) {
         try {
+            console.log(createEventDto);
             const event = await this.eventService.create(createEventDto);
             res.status(HttpStatus.OK).json(event)
         } catch (err) {
+            console.log(err.message)
             res.status(HttpStatus.BAD_REQUEST).send(err)
         }
     }

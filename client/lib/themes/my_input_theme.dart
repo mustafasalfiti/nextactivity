@@ -9,23 +9,24 @@ class MyInputTheme {
 
   OutlineInputBorder _buildBorder(Color color) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(color: color, width: 1.0),
     );
   }
 
   InputDecorationTheme theme() => InputDecorationTheme(
-        contentPadding: EdgeInsets.all(16),
+        contentPadding: EdgeInsets.all(13),
         // "always" put the label at the top
         floatingLabelBehavior: FloatingLabelBehavior.always,
         // useful for putting TextFields in a row can be wraped with Flexibile
         constraints: BoxConstraints(maxWidth: 150),
 
         // Borders
-        enabledBorder: _buildBorder(Colors.grey[600]!),
+        enabledBorder: _buildBorder(Colors.grey[500]!),
 
         errorBorder: _buildBorder(Colors.red),
 
+        focusedErrorBorder: _buildBorder(Colors.red),
         focusedBorder: _buildBorder(Colors.blue),
 
         disabledBorder: _buildBorder(Colors.green[200]!),

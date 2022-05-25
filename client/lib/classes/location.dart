@@ -1,5 +1,5 @@
 class Location {
   final String type;
-  final List<String> coordinates;
+  final List<double> coordinates;
   Location({required this.coordinates, required this.type});
 }

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class PasswordField extends StatefulWidget {
-  PasswordField({Key? key}) : super(key: key);
+class MultiLineField extends StatefulWidget {
+  String hintText;
+  TextEditingController controller;
+  MultiLineField(this.hintText, this.controller, {Key? key}) : super(key: key);
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<MultiLineField> createState() => _MultiLineFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
-  bool obscurePassword = true;
-
+class _MultiLineFieldState extends State<MultiLineField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -20,18 +20,18 @@ class _PasswordFieldState extends State<PasswordField> {
           return "This is a required field";
         }
       },
-      maxLength: 5,
+      maxLines: 6,
+      controller: widget.controller,
       decoration: InputDecoration(
-          labelText: "Password field",
           helperText: "",
-          hintText: "Description",
+          hintText: widget.hintText,
           label: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.info_outline),
               Padding(
                 padding: EdgeInsets.only(left: 8.0),
-                child: Text("Description"),
+                child: Text(widget.hintText),
               )
             ],
           )),

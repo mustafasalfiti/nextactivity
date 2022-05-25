@@ -7,6 +7,8 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { EventModule } from './event/event.module';
 import { AuthModule } from './auth/auth.module';
+import { MorganInterceptor, MorganModule } from 'nest-morgan';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.aisor.mongodb.net/?retryWrites=true&w=majority"),
@@ -14,9 +16,16 @@ import { AuthModule } from './auth/auth.module';
     PostModule,
     CommentModule,
     EventModule,
-    AuthModule
+    AuthModule,
+    MorganModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide:APP_INTERCEPTOR,
+      useClass:MorganInterceptor("combined")
+    }
+  ],
 })
 export class AppModule { }

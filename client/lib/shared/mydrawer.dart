@@ -1,5 +1,7 @@
-import 'package:client/homepage/event_template.dart';
+import 'package:client/pages/event_page.dart';
 import 'package:flutter/material.dart';
+
+import '../pages/event_template.dart';
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
@@ -67,7 +69,9 @@ class MyDrawer extends StatelessWidget {
         ListTile(
           onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EventTemplate()),
+            MaterialPageRoute(
+                settings: RouteSettings(name: "/Eventpage"),
+                builder: (context) => EventPage()),
           ),
           leading: Icon(
             Icons.assessment,
