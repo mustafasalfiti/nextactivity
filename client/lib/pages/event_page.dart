@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:client/pages/event_template.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../models/event.dart';
 
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
@@ -27,7 +29,11 @@ class _EventPageState extends State<EventPage> {
       body: ListView(
         children: [
           ElevatedButton(
-              onPressed: () => fetchEvents().then((value) => print(value.body)),
+              onPressed: () => fetchEvents().then((value) {
+                    Event _event = Event.fromJson(jsonDecode(value.body)[0]);
+                    print(_event);
+                    return _event;
+                  }),
               child: Text('testme'))
         ],
       ),
