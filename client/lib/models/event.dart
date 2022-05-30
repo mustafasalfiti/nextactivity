@@ -23,8 +23,8 @@ class Event {
     return Event(
       titel: json["titel"] as String,
       eventType: json["event_type"] as String,
-      description: json["description"] as Description,
-      location: json["location"] as Location,
+      description: Description.fromJson(json["description"]),
+      location: Location.fromJson(json["location"]),
       peopleJoined: json["people_joined"] as List<String>,
       peopleRequired: json["people_required"] as int,
     );
