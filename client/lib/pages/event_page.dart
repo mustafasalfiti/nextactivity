@@ -31,7 +31,7 @@ class _EventPageState extends State<EventPage> {
           ElevatedButton(
               onPressed: () => fetchEvents().then((value) {
                     Event _event = Event.fromJson(jsonDecode(value.body)[0]);
-                    print(_event);
+                    print(_event.toString());
                     return _event;
                   }),
               child: Text('testme'))

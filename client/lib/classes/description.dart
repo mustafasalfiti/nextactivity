@@ -1,12 +1,14 @@
 class Description {
-  final List<String> images;
+  String? id;
+  final List<dynamic> images;
   final String content;
-  Description({required this.images, required this.content});
+  Description({this.id, required this.images, required this.content});
 
   factory Description.fromJson(Map<String, dynamic> json) {
     return Description(
-      images: json["description"]["images"] as List<String>,
-      content: json["content"]["content"] as String,
+      id: json["_id"] as String,
+      images: json["images"] as List<dynamic>,
+      content: json["content"] as String,
     );
   }
 }

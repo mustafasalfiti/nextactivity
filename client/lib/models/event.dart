@@ -7,7 +7,7 @@ class Event {
   final String eventType;
   final Description description;
   final Location location;
-  final List<String> peopleJoined;
+  final List<dynamic> peopleJoined;
   final int peopleRequired;
 
   Event({
@@ -25,7 +25,7 @@ class Event {
       eventType: json["event_type"] as String,
       description: Description.fromJson(json["description"]),
       location: Location.fromJson(json["location"]),
-      peopleJoined: json["people_joined"] as List<String>,
+      peopleJoined: json["people_joined"] as List<dynamic>,
       peopleRequired: json["people_required"] as int,
     );
   }
