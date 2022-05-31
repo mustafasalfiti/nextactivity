@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_literals_to_create_im
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class MyPost extends StatelessWidget {
-  const MyPost({Key? key}) : super(key: key);
+class PostCard extends StatelessWidget {
+  const PostCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

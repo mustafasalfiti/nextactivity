@@ -23,7 +23,7 @@ class Post {
       userId: json["user_id"] as String,
       description: Description.fromJson(json["description"]),
       location: Location.fromJson(json["location"]),
-      comments: json["comments"] as List<dynamic> O,
+      comments: json["comments"] as List<dynamic>,
     );
   }
   String toJson() => jsonEncode({

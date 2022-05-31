@@ -17,7 +17,6 @@ export class PostController {
      * send back all posts from the database
      @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Get()
     public async getAllPosts(
         @Res() res: Response
@@ -35,7 +34,6 @@ export class PostController {
      * @param id
      * @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Get()
     public async getPost(
         @Body('id') id: string,
@@ -54,7 +52,6 @@ export class PostController {
      * @param createPostDto
      * @param res the response object from express framwork
      */
-    @UseGuards(JwtAuthGuard)
     @Post()
     public async createPost(
         @Body() createPostDto: CreatePostDto,

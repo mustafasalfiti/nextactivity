@@ -3,6 +3,7 @@ import 'package:client/classes/description.dart';
 import 'package:client/classes/location.dart';
 
 class Event {
+  String? id;
   final String titel;
   final String eventType;
   final Description description;
@@ -11,6 +12,7 @@ class Event {
   final int peopleRequired;
 
   Event({
+    this.id,
     required this.titel,
     required this.eventType,
     required this.description,
@@ -21,6 +23,7 @@ class Event {
 
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
+      id: json["_id"],
       titel: json["titel"] as String,
       eventType: json["event_type"] as String,
       description: Description.fromJson(json["description"]),
@@ -30,6 +33,7 @@ class Event {
     );
   }
   String toJson() => jsonEncode({
+        '_id': id,
         'titel': titel,
         'event_type': eventType,
         'people_joined': peopleJoined,

@@ -26,6 +26,12 @@ export class Post extends Document {
 
     @Prop({ type: Date, default: Date.now() })
     createdAt: Date;
+    
+    @Prop({type: [ Types.ObjectId ] , default:[]})
+    vote_up: Types.ObjectId[];
+
+    @Prop({type: [ Types.ObjectId ] , default:[]})
+    vote_down: Types.ObjectId[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

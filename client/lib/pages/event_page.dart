@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:client/components/event_card.dart';
 import 'package:client/pages/event_template.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -34,7 +35,8 @@ class _EventPageState extends State<EventPage> {
                     print(_event.toString());
                     return _event;
                   }),
-              child: Text('testme'))
+              child: Text('testme')),
+          EventCard()
         ],
       ),
       floatingActionButton: FloatingActionButton(
