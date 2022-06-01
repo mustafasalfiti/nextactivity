@@ -25,11 +25,11 @@ class _PostTemplateState extends State<PostTemplate> {
 
   Future<http.Response> _submitForm(String content) {
     Post post = Post(
-      description: Description(images: ["empty"], content: content),
-      location:
-          Location(coordinates: [-110.8571443, 32.4586858], type: "Location"),
-      userId: "62096f5cbbf77abdf2ee00e4",
-    );
+        description: Description(images: ["empty"], content: content),
+        location:
+            Location(coordinates: [-110.8571443, 32.4586858], type: "Location"),
+        userId: "62096f5cbbf77abdf2ee00e4",
+        comments: []);
     return http.post(Uri.parse('http://10.0.2.2:3000/api/post'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',

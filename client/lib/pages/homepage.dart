@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:client/components/post_card.dart';
+import 'package:client/pages/post_page.dart';
 import 'package:client/pages/post_template.dart';
 import 'package:client/shared/mycard.dart';
 import 'package:client/shared/mydrawer.dart';
@@ -34,11 +35,12 @@ class HomePage extends StatelessWidget {
         children: [
           ElevatedButton(
               onPressed: () => fetchPosts().then((value) {
-                    Post _posts = Post.fromJson(jsonDecode(value.body)[0]);
-                    print(_posts.toString());
-                    return _posts;
+                    var data = jsonDecode(value.body);
+                    List<Post> _posts = data.map((val) => Post.fromJson(data));
+                    print(_posts);
                   }),
               child: Text('testme')),
+          PostPage()
         ],
       ),
       floatingActionButton: FloatingActionButton(

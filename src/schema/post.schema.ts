@@ -18,7 +18,7 @@ export class Post extends Document {
     location: ILocation;
 
     @Prop({ type: [CommentSchema] , default:[] })
-    comments: Comment[];
+    comments: IComment[];
 
     //#TODO should be independent
     @Prop({ type: [Types.ObjectId] , default:[] })

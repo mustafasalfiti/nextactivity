@@ -59,6 +59,7 @@ export class PostController {
     ) {
         try {
             const post = await this.postService.create(createPostDto);
+            console.log(post)
             res.status(HttpStatus.OK).json(post)
         } catch (err) {
             res.status(HttpStatus.BAD_REQUEST).send(err)
@@ -120,3 +121,7 @@ export class PostController {
     }
 
 }
+
+
+
+
