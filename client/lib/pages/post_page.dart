@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class PostPage extends StatelessWidget {
+  const PostPage({Key? key}) : super(key: key);
 
   Future<http.Response> fetchPosts() {
     return http.get(Uri.parse('http://10.0.2.2:3000/api/post'));
@@ -17,12 +17,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: MyDrawer(),
-      ),
       appBar: AppBar(
         title: Text(
-          "Discovery",
+          "My Posts",
         ),
       ),
       body: PostFutureBuilder(),
@@ -30,7 +27,7 @@ class HomePage extends StatelessWidget {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-              settings: RouteSettings(name: "/HomePage"),
+              settings: RouteSettings(name: "/PostPage"),
               builder: (context) => PostTemplate()),
         ),
         child: Icon(Icons.add),

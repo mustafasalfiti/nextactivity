@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:client/pages/event_template.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../models/event.dart';

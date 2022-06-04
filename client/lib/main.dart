@@ -1,4 +1,4 @@
-import 'package:client/pages/homepage.dart';
+import 'package:client/pages/welcome_page.dart';
 import 'package:client/themes/my_input_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: Colors.blueGrey,
           inputDecorationTheme: MyInputTheme().theme()),
-      home: HomePage(),
+      home: WelcomePage(),
     );
   }
 }

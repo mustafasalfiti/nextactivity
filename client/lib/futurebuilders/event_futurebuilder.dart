@@ -38,7 +38,7 @@ class _EventFutureBuilderState extends State<EventFutureBuilder> {
     setState(() {
       _fetchEvents = getData();
     });
-    return Future.delayed(Duration(seconds: 2));
+    return Future.delayed(Duration(seconds: 1));
   }
 
   @override
