@@ -70,14 +70,13 @@ class _PostTemplateState extends State<PostTemplate> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
-                            onPressed: () => Navigator.popUntil(context,
-                                (route) => route.settings.name == "/HomePage"),
+                            onPressed: () => Navigator.of(context)
+                                .popUntil((route) => route.isFirst),
                             width: 120,
                           )
                         ],
                       ).show();
                     } else {
-                      print(res.body);
                       Alert(
                         context: context,
                         type: AlertType.error,
@@ -90,8 +89,8 @@ class _PostTemplateState extends State<PostTemplate> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
-                            onPressed: () => Navigator.popUntil(context,
-                                (route) => route.settings.name == "/HomePage"),
+                            onPressed: () => Navigator.of(context)
+                                .popUntil((route) => route.isFirst),
                             width: 120,
                           )
                         ],

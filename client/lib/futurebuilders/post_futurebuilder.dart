@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 import 'package:client/components/post_card.dart';
-import 'package:client/pages/post_template.dart';
+import 'package:client/templates/post_template.dart';
 import 'package:client/shared/myCard.dart';
-import 'package:client/shared/mycard.dart';
-import 'package:client/shared/mydrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,21 +11,20 @@ import '../models/post.dart';
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class PostPage extends StatefulWidget {
-  PostPage({Key? key}) : super(key: key);
+class PostFutureBuilder extends StatefulWidget {
+  PostFutureBuilder({Key? key}) : super(key: key);
 
   @override
-  State<PostPage> createState() => _PostPageState();
+  State<PostFutureBuilder> createState() => _PostFutureBuilderState();
 }
 
-class _PostPageState extends State<PostPage> {
+class _PostFutureBuilderState extends State<PostFutureBuilder> {
   late Future<List<Post>> _fetchPosts;
 
   @override
   void initState() {
     super.initState();
     _fetchPosts = getData();
-    print(getData());
   }
 
   Future<List<Post>> getData() async {
@@ -35,6 +32,13 @@ class _PostPageState extends State<PostPage> {
     List<dynamic> data = jsonDecode(response.body);
     List<Post> _posts = data.map((val) => Post.fromJson(val)).toList();
     return _posts;
+  }
+
+  Future<void> _onRefresh() {
+    setState(() {
+      _fetchPosts = getData();
+    });
+    return Future.delayed(Duration(seconds: 1));
   }
 
   @override
@@ -52,12 +56,14 @@ class _PostPageState extends State<PostPage> {
                 child: Text('An error occured'),
               );
             } else {
-              return ListView(
-                children: [
-                  snapshot.data.map((e) {
-                    return MyCard(e.description.content, "", e.description.content)
-                  })
-                ],
+              return RefreshIndicator(
+                onRefresh: _onRefresh,
+                child: ListView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    children: snapshot.data
+                        ?.map((e) => MyCard(
+                            e.description.content, "", e.description.content))
+                        .toList() as List<Widget>),
               );
             }
           }
