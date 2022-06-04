@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hello"),
+      child: Text("Login Page"),
     );
   }
 }
