@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-class PasswordField extends StatefulWidget {
-  PasswordField({Key? key}) : super(key: key);
+class PasswordInput extends StatefulWidget {
+  TextEditingController controller;
+  PasswordInput(this.controller, {Key? key}) : super(key: key);
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<PasswordInput> createState() => PasswordInputState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class PasswordInputState extends State<PasswordInput> {
   bool obscurePassword = true;
 
   @override
@@ -22,6 +23,7 @@ class _PasswordFieldState extends State<PasswordField> {
       },
       obscureText: obscurePassword,
       keyboardType: TextInputType.visiblePassword,
+      controller: widget.controller,
       decoration: InputDecoration(
           labelText: "Password field",
           helperText: "",
