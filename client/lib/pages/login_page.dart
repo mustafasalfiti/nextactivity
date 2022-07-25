@@ -2,8 +2,15 @@
 
 import 'package:client/components/normal_field.dart';
 import 'package:client/components/password_field.dart';
+import 'package:client/pages/register_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/user.dart';
+
+// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -13,8 +20,21 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var username = TextEditingController();
+  var phoneNumber = TextEditingController();
   var password = TextEditingController();
+
+  Future<http.Response> _loginForm(String phoneNumber, String password) {
+    User user =
+        User(password: password, phoneNumber: phoneNumber, emailAddress: "");
+    var respone = http.post(Uri.parse('http://10.0.2.2:3000/auth/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: user.toJson());
+    print(respone.then((value) => print(value.body)));
+    return respone;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -23,38 +43,41 @@ class _LoginPageState extends State<LoginPage> {
         height: double.infinity,
         width: double.infinity,
         padding: EdgeInsets.only(top: 150),
-        child: Column(
-          children: [
-            Text(
-              "Login",
-              style: TextStyle(
-                  fontSize: 60,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.grey),
-            ),
-            Container(
-              padding: ,
-              color: Colors.green,
-              width: 250,
-              child: Column(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: [
+              Text(
+                "Login",
+                style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  NormalInput("Username", username),
+                  NormalInput("Username", phoneNumber),
                   PasswordInput(password),
-                  SizedBox(
-                    height: 20,
-                    child: TextButton(
-                      style:
-                          TextButton.styleFrom(backgroundColor: Colors.yellow),
-                      onPressed: () => print('hh'),
-                      child: Text("vergiss passwort"),
-                    ),
-                  ),
-                  ElevatedButton(onPressed: () => {}, child: Text("Login"))
+                  ElevatedButton(
+                      onPressed: () =>
+                          _loginForm(phoneNumber.text, password.text),
+                      child: Text("Login")),
+                  ElevatedButton(
+                      onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                settings: RouteSettings(name: "/Registerpage"),
+                                builder: (context) => RegisterPage()),
+                          ).then((value) => print('hello')),
+                      child: Text("Register")),
                 ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

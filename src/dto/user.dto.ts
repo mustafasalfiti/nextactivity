@@ -2,8 +2,8 @@ import { IsDate, isDateString, IsEmail, IsNotEmpty, IsObject, IsString } from "c
 import { Date } from "mongoose";
 
 export class CreateUserDto {
-    @IsObject()
-    readonly fullname: Fullname
+    // @IsObject()
+    // readonly fullname: Fullname
     @IsString()
     @IsNotEmpty()
     readonly phone_number: string;
@@ -12,8 +12,8 @@ export class CreateUserDto {
     @IsNotEmpty()
     readonly password:string
 
-    @IsString()
-    readonly birthday: Date
+    // @IsString()
+    // readonly birthday: Date
 
     @IsEmail()
     readonly email_address: string
